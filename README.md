@@ -27,8 +27,8 @@ http://qust.me:8889/api/question/date/2017-11-24
 
 * get更新当天one essay question 并保存到数据库：
 
-    1. http://qust.me:8889/api/question/new/one
+    1. http://qust.me:8889/api/new/one
 
-    2. http://qust.me:8889/api/question/new/question
+    2. http://qust.me:8889/api/new/question
 
-    3. http://qust.me:8889/api/question/new/essay
+    3. http://qust.me:8889/api/new/essay
