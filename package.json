@@ -19,12 +19,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/pengchujin/oneiall_api.git"
+    "url": "git+ssh://git@github.com/pengchujin/oneisall_api.git"
   },
   "author": "pengchujin",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/pengchujin/oneiall_api/issues"
+    "url": "https://github.com/pengchujin/oneisall_api/issues"
   },
-  "homepage": "https://github.com/pengchujin/oneiall_api#readme"
+  "homepage": "https://github.com/pengchujin/oneisall_api#readme"
 }
