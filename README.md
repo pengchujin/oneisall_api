@@ -4,8 +4,8 @@ koa重写了one一个api
 
 ## 运行方式
 
-* 导入sql（保存了以往的数数据）
-* 修改server/config dn.js 数据库连接方式
+* 导入sql（保存了以往的数据）
+* 修改server/config db.js 数据库连接方式
 * npm install
 * node app.js
 
