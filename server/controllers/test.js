@@ -42,7 +42,7 @@ const addEssayInfo = async (ctx) => {
     data.author = Rowdata.data.hp_author
     data.author_it = Rowdata.data.auth_it
     data.content = Rowdata.data.hp_content
-    data.date = (Rowdata.data.last_update_date).slice(0,10)
+    data.date = (Rowdata.data.hp_makettime).slice(0,10)
     data.url = Rowdata.data.web_url
     data.author_img = Rowdata.data.author[0].web_url
     if(data.title.length >= 1 ){
@@ -73,7 +73,7 @@ const newEssayInfo = async (ctx) => {
     data.author = Rowdata.data.hp_author
     data.author_it = Rowdata.data.auth_it
     data.content = Rowdata.data.hp_content
-    data.date = (Rowdata.data.last_update_date).slice(0,10)
+    data.date = (Rowdata.data.hp_makettime).slice(0,10)
     data.url = Rowdata.data.web_url
     data.author_img = Rowdata.data.author[0].web_url
     if(data.title.length >= 1 ){
