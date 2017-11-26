@@ -26,6 +26,17 @@ const getOneByDate = async (date) => {
 }
 // 通过查询日期返回one object内容
 
+const getOneByDate1 = async (date) => {
+    const oneIndexInfo1 = await oneIndex.findOne({
+        where: {
+            date: date
+        }
+    });
+    console.log('getOneByDate1 日期 ' + date);
+    console.log('getOneByDate1.......' + oneIndex);
+    return oneIndexInfo1;
+}
+
 const addOneIndex = async (data) => {
     const result = await oneIndex.create({
         vol: data.vol,
@@ -45,6 +56,8 @@ const addOneIndex = async (data) => {
 module.exports = {
     getOneIndexById,
     addOneIndex,
-    getOneByDate
+    getOneByDate,
+    getOneByDate1
+
 }
 

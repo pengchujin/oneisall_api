@@ -1,5 +1,6 @@
 const testv = require('../models/test');
 const Axios = require('axios');
+const Date = require('./getDate');
 
 const getEssayInfo = async (ctx) => {
     const id = ctx.params.id;
@@ -57,7 +58,11 @@ const addEssayInfo = async (ctx) => {
 
 const newEssayInfo = async (ctx) => {
     let Rowdata = {};
-    ctx.body = '<h1>刷新文章成功</h1>'
+    let date = Date.getDate();
+    oldResult = await testv.getEssayByDate(date);
+    if(oldResult && typeof oldResult.dataValues == 'object' && oldResult.dataValues.date.length >= 1) {
+         ctx.body = oldResult.dataValues;
+    } else {
     await Axios.get('http://v3.wufazhuce.com:8000/api/essay/0')
     .then( function(response){
             Rowdata = response.data
@@ -76,12 +81,19 @@ const newEssayInfo = async (ctx) => {
     data.date = (Rowdata.data.hp_makettime).slice(0,10)
     data.url = Rowdata.data.web_url
     data.author_img = Rowdata.data.author[0].web_url
+    const newResult = await testv.getEssayByDate(data.date);
+    if(newResult && typeof newResult.dataValues == 'object' && newResult.dataValues.date.length >= 1) {
+        ctx.body = newResult.dataValues;
+    } else {
     if(data.title.length >= 1 ){
         const result = await testv.addEssay(data);
+        ctx.body = result;
     } else {
         console.log('id: ' + Nb + ' 的文章是空的');
     }
     }
+}
+}
 }
 // 更新当天文章
 

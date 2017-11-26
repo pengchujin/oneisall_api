@@ -1,5 +1,6 @@
 const testv = require('../models/question');
 //叫testv只是方便点，87076677
+const Date = require('./getDate');
 const Axios = require('axios');
 
 const getQuestionById = async(ctx) => {
@@ -58,13 +59,16 @@ const addQuestion = async() =>{
 // 遍历添加question
 
 const newQuestion = async(ctx) =>{
-    ids = [];
-    ctx.body = '<h1>更新问题成功<h1/>'
     let Rowdata = {};
+    let date = Date.getDate();
+    const oldResult = await testv.getQuestionByDate(date);
+    // console.log('??????????? ' + typeof oldResult.dataValues);
+    if(oldResult && typeof oldResult.dataValues == 'object' && oldResult.dataValues.date.length >= 1) {
+        ctx.body = oldResult;
+    } else {
     await Axios.get('http://v3.wufazhuce.com:8000/api/question/detail/0')
     .then( function(response){
-            Rowdata = response.data
-           
+            Rowdata = response.data    
     })
     .catch(function(error) {
         console.log(error);
@@ -80,12 +84,19 @@ const newQuestion = async(ctx) =>{
     data.url = Rowdata.data.web_url;
     data.a_author = Rowdata.data.answerer.user_name;
     data.date = Rowdata.data.question_makettime;
+    const newResult = await testv.getQuestionByDate(data.date);
+    if(newResult && typeof newResult.dataValues == 'object' && newResult.dataValues.date.length >= 1) {
+        ctx.body = newResult;
+    } else {
     if(data.id >= 1 ){
         const result = await testv.addQuestion(data);
+        ctx.body = result;
     } else {
         console.log('id: ' + Nb + ' 问题是空的');
     }
     }
+}
+}
 }
 
 module.exports= {

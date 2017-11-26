@@ -1,5 +1,6 @@
 const testv = require('../models/oneIndex');
 //叫testv只是方便点，87076677
+const Date = require('./getDate');
 const Axios = require('axios');
 
 const getOneIndexInfo = async(ctx) => {
@@ -18,7 +19,7 @@ const getOneByDate = async(ctx) => {
     ctx.body = result;
     console.log('查询的日期为' + result.date)
 }
-// 通过
+// 通过日期查询one数据,返回json数据
 
 const addOneIndex = async() => {
     ids = [];
@@ -30,8 +31,7 @@ const addOneIndex = async() => {
     let Rowdata = {};
     await Axios.get('http://v3.wufazhuce.com:8000/api/onelist/' + Nb + '/0')
     .then( function(response){
-            Rowdata = response.data
-           
+            Rowdata = response.data         
     })
     .catch(function(error) {
         console.log(error);
@@ -58,10 +58,14 @@ const addOneIndex = async() => {
 }
 // 批量写入one数据
 
-const newOne = async() => {
+const newOne = async(ctx) => {
     let Rowdata = {};
     let tmpData = {};
-
+    const date = Date.getDate();
+    oldResult = await testv.getOneByDate(date);
+    if(oldResult && typeof oldResult.dataValues == 'object' && oldResult.dataValues.date.length >= 1) {
+         ctx.body = oldResult.dataValues;
+    } else {
     await Axios.get('http://v3.wufazhuce.com:8000/api/onelist/idlist')
     .then(function(response){
         tmpData = response.data
@@ -72,8 +76,7 @@ const newOne = async() => {
     // 获取最新的one id
     await Axios.get('http://v3.wufazhuce.com:8000/api/onelist/' + Nb + '/0')
     .then( function(response){
-            Rowdata = response.data
-           
+            Rowdata = response.data       
     })
     .catch(function(error) {
         console.log(error);
@@ -90,12 +93,19 @@ const newOne = async() => {
     data.word = Rowdata.data.content_list[0].forward
     data.word_from = Rowdata.data.content_list[0].words_info
     data.id = Rowdata.data.content_list[0].item_id
+    const newResult = await testv.getOneByDate(data.date);
+    if(newResult && typeof newResult.dataValues == 'object' && newResult.dataValues.date.length >= 1) {
+        ctx.body = newResult.dataValues;
+    } else {
     if(data.vol.length >= 1 ){
         const result = await testv.addOneIndex(data);
+        ctx.body = result;
     } else {
         console.log('id: ' + Nb + ' 的文章是空的');
     }
     }
+}
+}
 }
 
 
