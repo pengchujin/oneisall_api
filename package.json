@@ -2,14 +2,15 @@
   "one": "koa_one",
   "version": "1.0.0",
   "dependencies": {
-    "koa": "^2.0.0",
-    "koa-router": "^7.3.0",
     "axios": "^0.17.1",
-    "mysql2": "^1.5.1",
-    "koa-logger": "^3.1.0",
-    "sequelize": "^4.22.15",
+    "koa": "^2.0.0",
     "koa-bodyparser": "^4.2.0",
-    "koa-json": "^2.0.2"
+    "koa-cors": "^0.0.16",
+    "koa-json": "^2.0.2",
+    "koa-logger": "^3.1.0",
+    "koa-router": "^7.3.0",
+    "mysql2": "^1.5.1",
+    "sequelize": "^4.22.15"
   },
   "name": "koa_one",
   "description": "one is all new api",

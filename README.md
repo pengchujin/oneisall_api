@@ -32,3 +32,8 @@ http://qust.me:8889/api/question/date/2017-11-24
     2. http://qust.me:8889/api/new/question
 
     3. http://qust.me:8889/api/new/essay
+
+ ## 遍历更新所有数据到数据库(使用时请自行替换网址)
+1. http://qust.me:8889/api/add/one
+2. http://qust.me:8889/api/add/questions
+3. http://qust.me:8889/api/add/

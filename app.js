@@ -3,8 +3,10 @@ const router = require('koa-router')();
 const json = require('koa-json');
 const logger =require('koa-logger')
 const essay = require('./server/routes/test')
+var cors = require('koa-cors');
 
 const app = new Koa();
+app.use(cors());
 app.use(require('koa-bodyparser')());
 app.use(json());
 app.use(logger());

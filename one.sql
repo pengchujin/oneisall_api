@@ -1,13 +1,13 @@
--- MySQL dump 10.16  Distrib 10.1.29-MariaDB, for Linux (x86_64)
+-- MySQL dump 10.16  Distrib 10.1.25-MariaDB, for debian-linux-gnu (x86_64)
 --
 -- Host: localhost    Database: one
 -- ------------------------------------------------------
--- Server version	10.1.29-MariaDB
+-- Server version	10.1.25-MariaDB-1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -30,7 +30,7 @@ CREATE TABLE `essay` (
   `content` varchar(5000) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `date` date DEFAULT NULL,
   `url` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `author_img` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `author_img` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -85,4 +85,4 @@ CREATE TABLE `question` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-11-26 21:26:42
+-- Dump completed on 2017-12-23 19:32:56
